@@ -25,9 +25,6 @@ public abstract class OldRestockMechanicMixin extends MerchantEntity {
 	public abstract VillagerData getVillagerData();
 
 	@Shadow
-	public abstract void craftBread();
-
-	@Shadow
 	public long lastRestockTime;
 
 	@Overwrite
@@ -36,10 +33,6 @@ public abstract class OldRestockMechanicMixin extends MerchantEntity {
 
 		for(TradeOffer offer : this.getOffers()) {
 			offer.resetUses();
-		}
-
-		if(this.getVillagerData().getProfession() == VillagerProfession.FARMER) {
-			this.craftBread();
 		}
 
 		this.lastRestockTime = this.world.getTime();
