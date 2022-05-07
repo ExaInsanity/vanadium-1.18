@@ -3,6 +3,10 @@ plugins {
 	alias(libs.plugins.quilt.loom)
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/vanadium.accesswidener");
+}
+
 archivesBaseName = project.archives_base_name
 version = project.version
 group = project.maven_group
@@ -25,9 +29,8 @@ dependencies {
 	}
 	modImplementation libs.quilt.loader
 
-	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
-	// Quilted Fabric API will automatically pull in the correct QSL version.
-	modImplementation libs.quilted.fabric.api
+	// QSL, no need for QFAPI
+	modImplementation "org.quiltmc:qsl:1.1.0-beta.8+1.18.2"
 }
 
 processResources {
